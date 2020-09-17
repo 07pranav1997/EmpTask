@@ -51,12 +51,26 @@ namespace EmpTask.Controllers
         }
 
         // POST: Employee/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        /*[HttpPost]
+        public ActionResult Create(EmployeeModel employeeModel)
         {
             try
             {
                 // TODO: Add insert logic here
+                SqlConnection cnDB = default(SqlConnection);
+                cnDB = new SqlConnection(ConnectionStr());
+                string query = "INSERT INTO EmpDetails VALUES (@FirstName, @LastName, @DOB, @Gender, @Qualification, @Designation, @DateOfJoining, @ReportingManager, @Department)";
+                SqlCommand sqlCmd = new SqlCommand(query, cnDB);
+                sqlCmd.Parameters.AddWithValue("@FirstName", employeeModel.FirstName);
+                sqlCmd.Parameters.AddWithValue("@LastName", employeeModel.LastName);
+                sqlCmd.Parameters.AddWithValue("@DOB", employeeModel.DOB);
+                sqlCmd.Parameters.AddWithValue("@Gender", employeeModel.Gender);
+                sqlCmd.Parameters.AddWithValue("@Qualification", employeeModel.Qualification);
+                sqlCmd.Parameters.AddWithValue("@Designation", employeeModel.Designation);
+                sqlCmd.Parameters.AddWithValue("@DateOfJoining", employeeModel.DateOfJoining);
+                sqlCmd.Parameters.AddWithValue("@ReportingManager", employeeModel.ReportingManager);
+                sqlCmd.Parameters.AddWithValue("@Department", employeeModel.Department);
+                sqlCmd.ExecuteNonQuery();
 
                 return RedirectToAction("Index");
             }
@@ -64,6 +78,28 @@ namespace EmpTask.Controllers
             {
                 return View();
             }
+        }
+        */
+        [HttpPost]
+        public ActionResult Create(EmployeeModel employeeModel)
+        {
+            using (SqlConnection cnDB = new SqlConnection(ConnectionStr()))
+            {
+                cnDB.Open();
+                string query = "INSERT INTO EmpDetails VALUES (@FirstName, @LastName, @DOB, @Gender, @Qualification, @Designation, @DateOfJoining, @ReportingManager, @Department)";
+                SqlCommand sqlCmd = new SqlCommand(query, cnDB);
+                sqlCmd.Parameters.AddWithValue("@FirstName", employeeModel.FirstName);
+                sqlCmd.Parameters.AddWithValue("@LastName", employeeModel.LastName);
+                sqlCmd.Parameters.AddWithValue("@DOB", employeeModel.DOB);
+                sqlCmd.Parameters.AddWithValue("@Gender", employeeModel.Gender);
+                sqlCmd.Parameters.AddWithValue("@Qualification", employeeModel.Qualification);
+                sqlCmd.Parameters.AddWithValue("@Designation", employeeModel.Designation);
+                sqlCmd.Parameters.AddWithValue("@DateOfJoining", employeeModel.DateOfJoining);
+                sqlCmd.Parameters.AddWithValue("@ReportingManager", employeeModel.ReportingManager);
+                sqlCmd.Parameters.AddWithValue("@Department", employeeModel.Department);
+                sqlCmd.ExecuteNonQuery();
+            }
+            return RedirectToAction("Index");
         }
 
         // GET: Employee/Edit/5

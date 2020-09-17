@@ -11,7 +11,6 @@ namespace EmpTask.Models
         public int id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-/*        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{dd-MMM-yyyy}")]*/
         public DateTime DOB { get; set; }
         public string Gender { get; set; }
         public string Qualification { get; set; }
