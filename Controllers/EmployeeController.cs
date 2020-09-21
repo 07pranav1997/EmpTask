@@ -103,9 +103,40 @@ namespace EmpTask.Controllers
         }
 
         // GET: Employee/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? pid)
         {
-            return View();
+            /*if (pid == null)
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);*/
+            /*else
+            {*/
+                EmployeeModel employeeModel = new EmployeeModel();
+                DataTable dataTable = new DataTable();
+                using (SqlConnection cnDB = new SqlConnection(ConnectionStr()))
+                {
+                    cnDB.Open();
+                    string query = "SELECT * FROM EmpDetails where @id = id";
+                    SqlDataAdapter dsAdp = new SqlDataAdapter(query, cnDB);
+                    dsAdp.SelectCommand.Parameters.AddWithValue("@id", pid);
+                    dsAdp.Fill(dataTable);
+                }
+
+                if (dataTable.Rows.Count == 1)
+                {
+                    employeeModel.FirstName = dataTable.Rows[0][1].ToString();
+                    employeeModel.LastName = dataTable.Rows[0][2].ToString();
+                    employeeModel.DOB = Convert.ToDateTime(dataTable.Rows[0][3].ToString());
+                    employeeModel.Gender = dataTable.Rows[0][4].ToString();
+                    employeeModel.Qualification = dataTable.Rows[0][5].ToString();
+                    employeeModel.Designation = dataTable.Rows[0][6].ToString();
+                    employeeModel.DateOfJoining = Convert.ToDateTime(dataTable.Rows[0][7].ToString());
+                    employeeModel.ReportingManager = dataTable.Rows[0][8].ToString();
+                    employeeModel.Department = dataTable.Rows[0][9].ToString();
+                    return View(employeeModel);
+                }
+
+                return RedirectToAction("Index");
+            /*}*/
+            
         }
 
         // POST: Employee/Edit/5

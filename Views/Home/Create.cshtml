@@ -1,0 +1,97 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+</head>
+
+<body ng-app="empAPP">
+    <div ng-controller="empController">
+        {{1 + 1}}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+
+                    <div class="column form-group" style="width:50%;Text-align:center;float:left;">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" ng-model="newEmployee.FirstName" />
+                    </div>
+                    <div class="column form-group" style="Text-align:center;Width:50%;float:right">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" ng-model="newEmployee.LastName" />
+                    </div>
+
+                    <br /><br />
+
+                    <div class="column form-group" style="width:50%;Text-align:center;float:left;">
+                        <label>Date of Birth</label>
+                        <input type="date" class="form-control" ng-model="newEmployee.Dob" />
+                    </div>
+                    <div class="column form-group" style="Text-align: center;Width:50%; float: right">
+                        <label>Gender</label>
+                        Male <input type="radio" value="false" class="" ng-model="newEmployee.Gender">
+                        Female <input type="radio" value="true" class="" ng-model="newEmployee.Gender">
+                    </div>
+
+                    <br /><br />
+
+                    <div class="column form-group" style="width:50%;Text-align:center;float:left;">
+                        <label>Qualification</label>
+                        <input type="text" class="form-control" ng-model="newEmployee.Qualification" />
+                    </div>
+                    <div class="form-group" style="Text-align: center;Width:50%; float: right">
+                        <label>Date of Joining</label>
+                        <input type="date" class="form-control" ng-model="newEmployee.DateOfJoining" />
+                    </div>
+
+                    <br /><br />
+
+                    <div class="column form-group" style="width:50%;Text-align:center;float:left;">
+                        <label>Department</label>
+                        <input type="text" class="form-control" ng-model="newEmployee.Department" />
+                    </div>
+                    <div class="form-group" style="Text-align: center;Width:50%; float: right">
+                        <label>Designation</label>
+                        <input type="text" class="form-control" ng-model="newEmployee.Designation" />
+                    </div>
+
+                    <br /><br />
+
+                    <div class="column form-group" style="width:50%;Text-align:center;float:left;">
+                        <label>Reporting Manager</label>
+                        <input type="text" class="form-control" ng-model="newEmployee.ReportingManager" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" ng-click="addEmployee()" value="{{ btntext1 }}" />
+                        <input type="button" class="btn btn-primary" ng-click="resetForm()" value="{{ btntext2 }}" />
+
+                    </div>
+
+                </div>
+
+                <div class="col-sm-2"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="~/Scripts/angular.js"></script>
+    @*<script src="~/Scripts/angular.min.js"></script>*@
+    <script src="~/Scripts/Angular/EMP.js"></script>
+
+
+</body>
+
+</html>
