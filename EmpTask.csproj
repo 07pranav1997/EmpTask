@@ -127,6 +127,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\QualificationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +135,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min1.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -216,6 +218,7 @@
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\ShowAll.cshtml" />
+    <Content Include="Views\Home\update_Record.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

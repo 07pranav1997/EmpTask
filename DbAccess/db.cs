@@ -40,6 +40,24 @@ namespace EmpTask.DbAccess
             return dtTemp;
         }
         
+        //Get Records by ID
+        public DataSet get_recordbyID(int id)
+        {
+            using (SqlConnection cnDB = new SqlConnection(ConnectionStr()))
+            {
+                cnDB.Open();
+                SqlCommand sqlCmd = new SqlCommand("sp_getbyID", cnDB);
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@id", id);
+                SqlDataAdapter dsAdp = default(SqlDataAdapter);
+                DataSet dtTemp = new DataSet();
+                dsAdp.Fill(dtTemp);
+                cnDB.Close();
+
+                return dtTemp;
+            }
+        }
+
         //Add Records
         public void Add_record(EmployeeModel employeeModel)
         {

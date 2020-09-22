@@ -59,6 +59,25 @@ namespace EmpTask.Controllers
             return View();
         }
 
+
+
+        // Get All Qualifications
+        public JsonResult GetQualification()
+        {
+            DataSet ds = DB.get_record();
+            List<QualificationModel> qualificationModels = new List<QualificationModel>();
+            foreach(DataRow dr in ds.Tables[0].Rows)
+            {
+                qualificationModels.Add(new QualificationModel
+                {
+                    qualification = dr["qualification"].ToString(),
+                });
+            }
+            return Json(qualificationModels, JsonRequestBehavior.AllowGet);
+        }
+
+        
+
         //Add record
         public JsonResult AddRecord(EmployeeModel employeeModel)
         {
@@ -94,6 +113,34 @@ namespace EmpTask.Controllers
                 result = "Failed";
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult update_Record(int id)
+        {
+            return View();
+        }
+
+        public JsonResult GetDataById(int id)
+        {
+            DataSet ds = DB.get_recordbyID(id);
+            List<EmployeeModel> employeeModels = new List<EmployeeModel>();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                employeeModels.Add(new EmployeeModel
+                {
+                    id = Convert.ToInt32(dr["id"]),
+                    FirstName = dr["FirstName"].ToString(),
+                    LastName = dr["LastName"].ToString(),
+                    DOB = Convert.ToDateTime(dr["DOB"]),
+                    Gender = dr["Gender"].ToString(),
+                    Qualification = dr["Qualification"].ToString(),
+                    Designation = dr["Designation"].ToString(),
+                    DateOfJoining = Convert.ToDateTime(dr["DateOfJoining"]),
+                    ReportingManager = dr["ReportingManager"].ToString(),
+                    Department = dr["Department"].ToString()
+                });
+            }
+            return Json(employeeModels, JsonRequestBehavior.AllowGet);
         }
 
         //Delete Data 

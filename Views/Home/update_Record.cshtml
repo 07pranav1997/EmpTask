@@ -13,7 +13,7 @@
 </head>
 
 <body ng-app="empAPP">
-    <div ng-controller="empController">
+    <div ng-controller="empController" data-ng-init="showEmpByID(@Convert.ToInt32(Request.QueryString["id"]))">
 
         <div class="container">
             <div class="row">
@@ -43,16 +43,16 @@
 
                     <br /><br />
 
-                          <div class="column form-group" style="width:50%;Text-align:center;float:left;">
-                              <label>Qualification</label>
-                              <input type="text" class="form-control" ng-model="newEmployee.Qualification" />
-                              @*<select ng-model="newEmployee.Qualification" class="form-control">
-                                  <option value="">--Select--</option>
-                                  <option ng-repeat="q in qual">
-                                      {{ q.qualification }}
-                                  </option>
-                              </select>*@
-                          </div>
+                    <div class="column form-group" style="width:50%;Text-align:center;float:left;">
+                        <label>Qualification</label>
+                        <input type="text" class="form-control" ng-model="newEmployee.Qualification" />
+                        @*<select ng-model="newEmployee.Qualification" class="form-control">
+                                <option value="">--Select--</option>
+                                <option ng-repeat="q in qual">
+                                    {{ q.qualification }}
+                                </option>
+                            </select>*@
+                    </div>
                     <div class="form-group" style="Text-align: center;Width:50%; float: right">
                         <label>Date of Joining</label>
                         <input type="date" class="form-control" ng-model="newEmployee.DateOfJoining" />

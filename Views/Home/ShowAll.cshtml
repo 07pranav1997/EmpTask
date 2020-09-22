@@ -64,12 +64,16 @@
             </thead>
             <tbody>
                 <tr ng-repeat="e in emp | filter: searchText ">
-                    <td>{{ e.id }}</td>
+                    <td>{{ $index + 1 }}</td>
                     <td>{{ e.FirstName + " " + e.LastName }}</td>
                     <td>{{ e.ReportingManager }}</td>
                     <td>{{ e.DateOfJoining | date: "dd/MM/yyyy" }}</td>
                     <td>{{ e.Department }}</td>
                     <td>{{ e.Designation }}</td>
+                    <td>
+                        <a href="/Home/update_Record?id={{ e.id }}">Update</a> | 
+                        <a href="/Home/DeleteRecord?id={{ e.id }}">Delete</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
